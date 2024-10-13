@@ -1,16 +1,17 @@
 name: Build N64 ROM
 
 on:
-  push:
-    paths:
-      - '.github/workflows/build-n64-rom.yml'
-      - '.devcontainer/N64/**'
-      - '240psuite/N64/**'
-  pull_request:
-    paths:
-      - '.github/workflows/build-n64-rom.yml'
-      - '.devcontainer/N64/**'
-      - '240psuite/N64/**'
+  workflow_dispatch:
+  # push:
+  #   paths:
+  #     - '.github/workflows/build-n64-rom.yml'
+  #     - '.devcontainer/N64/**'
+  #     - '240psuite/N64/**'
+  # pull_request:
+  #   paths:
+  #     - '.github/workflows/build-n64-rom.yml'
+  #     - '.devcontainer/N64/**'
+  #     - '240psuite/N64/**'
 
 jobs:
   build-rom:
@@ -29,11 +30,10 @@ jobs:
         # env:
         #   FLAGS: -DVERSION_NUMBER="N64 X.XX.X"
 
-# Comment in, if/when needed.
-      # - name: Upload artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: 240pTestSuite-N64
-      #     path: |
-      #       ./240psuite/N64/output/240pSuite.z64
-      #       ./240psuite/N64/build/240pSuite.elf
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: 240pTestSuite-N64
+          path: |
+            ./240psuite/N64/output/240pSuite.z64
+            ./240psuite/N64/build/240pSuite.elf
